@@ -1,0 +1,20 @@
+{"word":"hello","sentence":"nice to meet you"}
+{"word":"said","sentence":"i said empty your mind"}
+{"word":"formless","sentence":"be formless,shapeless,like water"}
+{"word":"becomes","sentence":"now you put water into a cup,it becomes the cup"}
+{"word":"bottle","sentence":"you put water into a bottle,it becomes the bottle"}
+{"word":"teapot","sentence":"you put water into a teapot,it becomes the teapot"}
+{"word":"flow","sentence":"now,water can flow"}
+{"word":"crash","sentence":"or it can crash"}
+{"word":"friend","sentence":"be water , my friend"}
+{"word":"dilemma","sentence":"bruce lee faces the real dilemma"}
+{"word":"verge","sentence":"He`s on the verge of stardom in the United States"}
+{"word":"horizon","sentence":"with a projected TV series on the horizon"}
+{"word":"achieved","sentence":"But he`s just achieved supersardom"}
+{"word":"actor","sentence":"as a film actor here in Hong Kong"}
+{"word":"choose","sentence":"so what does he choose,the East or the West?"}
+{"word":"kind","sentence":"lt`s a kind of problem..."}
+{"word":"most","sentence":"...most budding movie acors wouldn`t welcome"}
+{"word":"mandrain","sentence":"Well,how can you play in mandarin movies if you don`t even spack mandarin?"}
+{"word":"that","sentence":"how do you do that?"}
+{"word":"only","sentence":"Well,first of all , i spack only Cantonese"}

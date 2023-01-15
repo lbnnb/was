@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>夏虫背单词</title>
+		<style>
+			@font-face {
+				font-family: f1;
+				src: url(f1.ttf);
+			}
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		
+			.add{
+				display: flex;
+				justify-content: center;
+				background: white;
+				
+			}
+			.addBox{
+				display: flex;
+				box-sizing: border-box;
+				width: 400px;
+				height: 50px;
+				border: 5px solid skyblue;
+				background: white;
+			}
+			.addBox input{
+				width: 100%;
+				height: 100%;
+				font-size: 20px;
+				border: none;
+			}
+			.addBox input:focus{
+				outline: none;
+			}
+		
+			.addBtn{
+				width: 100px;
+				height: 50px;
+				background: skyblue;
+				text-align: center;
+				line-height: 50px;
+				font-size: 30px;
+				color: white;
+				
+			}
+			.lists ul{ 
+				width: 100%;
+			}
+			.lists ul li{
+			
+				display: flex;
+				height: 50px;
+				background: gainsboro;	
+				/* border-bottom: 1px solid gray; */
+				line-height: 50px;
+				font-size: 20px;
+			}
+			.word{
+				width: 400px;
+				font-weight: bold;
+				text-align: center;
+				color: rgba(0, 0, 0, 1);
+			}
+			button{
+				width: 100%;
+				height: 100%;
+				display: block;
+				background: transparent;
+				border: transparent;
+				color: white;
+				font-size: 25px;
+			}
+			
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div class="add">
+			<div class="addBox">
+				<input type="text" class="wordInput" placeholder="word"/>
+				<input type="text" class="sentenceInput" placeholder="sentence"/>
+			</div>
+			<div class="addBtn"><button>add</button></div>
+		</div>
+		<div class="lists">
+			<ul>
+			</ul>
+		</div>
+	</body>
+	<script>
+		read()
+		function read(){
+			let ul = document.querySelector('.lists ul')
+			ul.innerHTML = ''
+			axios.get('/select') .then(function (response) {
+				  response.data.forEach((v,i)=>{
+					  render(v.word,v.sentence,i)
+				  })
+				  const lis = document.querySelectorAll('.lists li')
+				  for(let i = 0; i < lis.length;i+=2){
+				  	lis[i].style.background = 'white'
+				  }
+			});
+		}
+		//渲染方法
+		function render(word,sentence,i){
+			let li = `
+			<li>
+			    &nbsp;&nbsp;<span>${i}</span>
+				<div class="word">${word}</div>
+				<div class="sentence">${sentence}</div>
+			</li>`
+			document.querySelector('.lists ul').insertAdjacentHTML('afterbegin',li)
+		}
+		//写入方法
+		function write(word,sentence){
+			let url = '/insert?word='+word+'&sentence='+sentence
+			axios.get(url).then(function (response) {
+				console.log(response.data);
+			});
+		}
+		//按钮点击事件
+		document.querySelector('.addBtn').addEventListener('click',function(){
+			let word = document.querySelector('.wordInput').value
+			let sentence = document.querySelector('.sentenceInput').value
+			write(word,sentence)
+			read()
+			clearInput()
+		})
+		//清空文本框
+		function clearInput(){
+			let inputs = ['wordInput','sentenceInput']
+			inputs.forEach(v=>{
+				document.querySelector('.'+v).value = ''
+			})
+		}
+		
+		styles()
+		//样式工具类
+		function styles(){
+			//按钮点击闪红
+			document.querySelector('.addBtn').addEventListener('click',function(){
+				this.style.background = 'red'
+				setTimeout(()=>{
+					this.style.background = 'skyblue'
+				},100)
+			})
+			
+		}
+	</script>
+</html>
